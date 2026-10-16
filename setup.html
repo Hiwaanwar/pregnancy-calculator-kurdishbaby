@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ku" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>زانیاریەکانت - معلوماتك</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/setup.css">
+</head>
+<body class="setup-page">
+
+    <div class="setup-container">
+        <!-- الهيدر -->
+        <div class="setup-header">
+            <div class="setup-emoji">🤰</div>
+            <h1>زانیاریەکانت بنووسە</h1>
+            <p>ئەم زانیاریانە تەنها جارێک پێویستە</p>
+        </div>
+
+        <!-- النموذج -->
+        <form id="setupForm" class="setup-form">
+
+            <div class="form-group">
+                <label>👤 ناوت</label>
+                <input 
+                    type="text" 
+                    id="userName" 
+                    placeholder="ناوی تەواوت بنووسە" 
+                    required>
+            </div>
+
+            <div class="form-group">
+                <label>📅 یەکەم ڕۆژی دوایین خولی مانگانە</label>
+                <input 
+                    type="date" 
+                    id="lastPeriod" 
+                    required>
+                <small>ڕێکەوتی دەستپێکی دوایین خولی مانگانەت</small>
+            </div>
+
+            <div class="form-group">
+                <label>⏱️ درێژی خولی مانگانە (بە ڕۆژ)</label>
+                <input 
+                    type="number" 
+                    id="cycleLength" 
+                    value="28" 
+                    min="20" 
+                    max="45" 
+                    required>
+                <small>زۆربەی ژنان 28 ڕۆژ</small>
+            </div>
+
+            <button type="submit" class="btn-save">
+                پاشەکەوتکردن و دەستپێکردن 💾
+            </button>
+
+        </form>
+    </div>
+
+    <script src="js/storage.js"></script>
+    <script src="js/setup.js"></script>
+</body>
+</html>

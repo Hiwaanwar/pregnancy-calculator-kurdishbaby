@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ku" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ژمێرەری دووگیانی 🌸</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body class="dashboard-page">
+
+    <!-- شريط علوي -->
+    <header class="top-bar">
+        <div class="greeting">
+            <span>سڵاو،</span>
+            <strong id="userName">...</strong>
+            <span>🌸</span>
+        </div>
+        <button class="settings-btn" onclick="openSettings()">
+            ⚙️
+        </button>
+    </header>
+
+    <div class="app-container">
+
+        <!-- بطاقة الأسبوع الحالي -->
+        <section class="card card-week">
+            <div class="week-label">هەفتەی ئێستا</div>
+            <div class="week-number" id="currentWeek">--</div>
+            <div class="week-days" id="weekDays">-- ڕۆژ</div>
+            
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            
+            <div class="trimester-badge" id="trimester">--</div>
+        </section>
+
+        <!-- بطاقة حجم الجنين -->
+        <section class="card card-fruit">
+            <h3>👶 قەبارەی منداڵەکەت</h3>
+            <div class="fruit-content">
+                <div class="fruit-emoji" id="fruitEmoji">🍓</div>
+                <div class="fruit-info">
+                    <p class="fruit-name" id="fruitName">...</p>
+                    <p class="fruit-size" id="fruitSize">...</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- نصيحة اليوم -->
+        <section class="card card-tip">
+            <div class="tip-header">
+                <span>💡</span>
+                <h3>ئامۆژگاری ئەمڕۆ</h3>
+            </div>
+            <p class="tip-text" id="dailyTip">...</p>
+        </section>
+
+        <!-- عدادات -->
+        <section class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">📅</div>
+                <div class="stat-value" id="dueDate">--</div>
+                <div class="stat-label">ڕێکەوتی منداڵبوون</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">⏳</div>
+                <div class="stat-value" id="daysRemaining">--</div>
+                <div class="stat-label">ڕۆژی ماوە</div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- شاشة الإعدادات -->
+    <div class="settings-modal" id="settingsModal">
+        <div class="settings-content">
+            <div class="settings-header">
+                <h2>⚙️ ڕێکخستن</h2>
+                <button class="close-btn" onclick="closeSettings()">✕</button>
+            </div>
+
+            <div class="settings-options">
+                
+                <!-- خيار 1: تعديل البيانات -->
+                <a href="setup.html?edit=true" class="settings-option">
+                    <div class="option-icon">✏️</div>
+                    <div class="option-info">
+                        <h4>دەستکاری زانیاریەکان</h4>
+                        <p>ئەگەر زانیاریەکانت هەڵە بوو، لێرە دەستکاری بکە</p>
+                    </div>
+                    <div class="option-arrow">←</div>
+                </a>
+
+                <!-- خيار 2: حول -->
+                <div class="settings-option" onclick="openAbout()">
+                    <div class="option-icon">ℹ️</div>
+                    <div class="option-info">
+                        <h4>دەربارەی</h4>
+                        <p>زانیاری دروستکەری ئەپڵیکەیشن</p>
+                    </div>
+                    <div class="option-arrow">←</div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- شاشة "حول" -->
+    <div class="about-modal" id="aboutModal">
+        <div class="about-content">
+            <button class="close-btn" onclick="closeAbout()">✕</button>
+
+            <div class="about-header">
+                <div class="dev-avatar">🌸</div>
+                <h2>هیوا ئەنوەر</h2>
+                <p>دروستکەری ئەم ئەپڵیکەیشن</p>
+            </div>
+
+            <div class="about-body">
+                <p class="about-text">
+                    سوپاس بۆ بەکارهێنانی ئەم ئەپڵیکەیشنە. 
+                    ئەگەر پرسیار یان پێشنیارێکت هەیە، 
+                    تکایە پەیوەندیم پێوە بکە.
+                </p>
+
+                <div class="contact-buttons">
+                    <a href="https://www.instagram.com/hiwa_anwar94" 
+                       target="_blank" 
+                       class="contact-btn instagram">
+                        <span>📷</span>
+                        <span>Instagram</span>
+                    </a>
+                    <a href="https://t.me/Hiwaanwar" 
+                       target="_blank" 
+                       class="contact-btn telegram">
+                        <span>✈️</span>
+                        <span>Telegram</span>
+                    </a>
+                </div>
+
+                <p class="version">وەشانی 1.0.0</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- حاوية الإعلان -->
+    <div class="ad-modal" id="adModal">
+        <div class="ad-content">
+            <div class="ad-loading">⏳</div>
+            <p>کەمێک چاوەڕوان بە...</p>
+            <!-- هنا يوضع كود AdSense لاحقاً -->
+            <div id="adContainer"></div>
+        </div>
+    </div>
+
+    <script src="js/storage.js"></script>
+    <script src="js/calculator.js"></script>
+    <script src="js/tips-data.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script src="js/ads.js"></script>
+</body>
+</html>
