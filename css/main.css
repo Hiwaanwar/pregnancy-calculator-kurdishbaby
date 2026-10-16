@@ -1,0 +1,81 @@
+/* الألوان الأساسية للتطبيق */
+:root {
+    --pink-primary: #FFB6C1;
+    --pink-dark: #E87A9E;
+    --pink-light: #FFF0F5;
+    --pink-bg: #FFE5EC;
+    --purple-accent: #C9B6E4;
+    --purple-dark: #8B7AC9;
+    --text-dark: #4A2C3D;
+    --text-light: #9C7A8A;
+    --white: #FFFFFF;
+    --shadow: 0 8px 24px rgba(232, 122, 158, 0.15);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', 'Noto Kufi Arabic', Tahoma, sans-serif;
+}
+
+body {
+    background: linear-gradient(180deg, #FFF0F5 0%, #FFE5EC 100%);
+    min-height: 100vh;
+    direction: rtl;
+    color: var(--text-dark);
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* عناصر عامة */
+button {
+    cursor: pointer;
+    font-family: inherit;
+    border: none;
+    outline: none;
+}
+
+input, select {
+    font-family: inherit;
+    outline: none;
+}
+
+a {
+    text-decoration: none;
+    color: var(--pink-dark);
+}
+
+/* البطاقة العامة */
+.card {
+    background: var(--white);
+    border-radius: 24px;
+    padding: 22px;
+    margin-bottom: 16px;
+    box-shadow: var(--shadow);
+}
+
+/* الرسوم المتحركة */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.animate-in {
+    animation: fadeInUp 0.5s ease-out;
+}
