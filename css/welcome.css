@@ -86,6 +86,9 @@
     flex-shrink: 0;
 }
 
+/* ==========================================
+   زر دەستپێکردن - تفاعلي
+   ========================================== */
 .btn-start {
     width: 100%;
     padding: 18px;
@@ -95,12 +98,66 @@
     font-weight: 700;
     border-radius: 20px;
     box-shadow: 0 10px 25px rgba(255, 143, 163, 0.4);
-    transition: all 0.3s;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     margin-bottom: 15px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    border: none;
+    outline: none;
 }
 
+/* عند الوقوف بالماوس (للكمبيوتر) */
+.btn-start:hover {
+    background: linear-gradient(135deg, #FF9DAE 0%, #FF6B9D 100%);
+    box-shadow: 0 15px 35px rgba(255, 143, 163, 0.5);
+    transform: translateY(-3px);
+}
+
+/* عند الضغط على الزر */
 .btn-start:active {
-    transform: scale(0.97);
+    transform: scale(0.95) translateY(0);
+    box-shadow: 0 5px 15px rgba(255, 143, 163, 0.4);
+    background: linear-gradient(135deg, #FF8FA3 0%, #FF6B9D 100%);
+}
+
+/* تأثير الموجة (Ripple) عند الضغط */
+.btn-start::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s, opacity 0.6s;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.btn-start:active::after {
+    width: 400px;
+    height: 400px;
+    opacity: 1;
+    transition: 0s;
+}
+
+/* تأثير ظهور أولي */
+.btn-start {
+    animation: buttonAppear 0.6s ease-out;
+}
+
+@keyframes buttonAppear {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .welcome-note {
