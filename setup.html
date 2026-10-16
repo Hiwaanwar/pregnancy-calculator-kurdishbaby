@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>زانیاریەکانت - معلوماتك</title>
+    
+    <!-- مكتبة flatpickr -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/setup.css">
 </head>
@@ -31,9 +35,12 @@
 
             <div class="form-group">
                 <label>📅 یەکەم ڕۆژی دوایین خولی مانگانە</label>
+                <!-- ✅ استبدلنا type="date" بـ type="text" + flatpickr -->
                 <input 
-                    type="date" 
+                    type="text" 
                     id="lastPeriod" 
+                    placeholder="کرتە بکە بۆ هەڵبژاردنی ڕێکەوت"
+                    readonly
                     required>
                 <small>ڕێکەوتی دەستپێکی دوایین خولی مانگانەت</small>
             </div>
@@ -57,7 +64,32 @@
         </form>
     </div>
 
+    <!-- مكتبة flatpickr للتقويم -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ar.js"></script>
+    
     <script src="js/storage.js"></script>
     <script src="js/setup.js"></script>
+    
+    <!-- إعداد التقويم -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // إعداد التقويم
+            flatpickr("#lastPeriod", {
+                locale: "ar",              // اللغة العربية (تدعم RTL)
+                dateFormat: "Y-m-d",       // الصيغة في الحقل
+                altInput: true,            // عرض بصيغة أخرى
+                altFormat: "j F Y",        // عرض بصيغة "17 أكتوبر 2026"
+                maxDate: "today",          // منع اختيار تاريخ مستقبلي
+                disableMobile: true,       // منع استخدام التقويم الأصلي للجهاز
+                allowInput: false,         // منع الكتابة اليدوية
+                clickOpens: true,          // يفتح عند الضغط
+                monthSelectorType: "static",
+                animate: true,
+                position: "auto",
+                theme: "light"
+            });
+        });
+    </script>
 </body>
 </html>
