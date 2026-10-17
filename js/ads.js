@@ -1,50 +1,42 @@
 // ==========================================
-// بەڕێوەبردنی ڕیکلامەکان - AdMob
+// بەڕێوەبردنی ڕیکلامەکان - AdMob Plus
 // ==========================================
 
-// ✅ ناسنامەی یەکەی ڕیکلامەکەت
 const AD_UNIT_ID = 'ca-app-pub-9868815971759940/5406504728';
-
-// ⚠️ لە کاتی تاقیکردنەوە: بیکە true
-// دوای دڵنیابوون لە کارکردنی ڕیکلام: بیکە false
 const IS_TESTING = true;
 
 // چاوەڕوان بە هەتا ئەپڵیکەیشن ئامادە دەبێت
-document.addEventListener('deviceready', function() {
+document.addEventListener('deviceready', async function() {
     console.log('📱 ئەپڵیکەیشن ئامادەیە - ڕیکلام بار دەکرێت...');
     
+    // پشکنین بۆ ئەوەی AdMob بەردەست بێت
     if (typeof admob === 'undefined') {
         console.log('⚠️ AdMob بەردەست نییە');
         return;
     }
     
     // ڕیکلام تەنها جارێک لەم دانیشتنەدا پیشان بدرێت
-    if (shouldShowAd()) {
-        showInterstitialAd();
+    if (!shouldShowAd()) {
+        return;
+    }
+    
+    try {
+        await admob.start();
+        
+        const interstitial = new admob.InterstitialAd({
+            adUnitId: AD_UNIT_ID,
+        });
+        
+        await interstitial.load();
+        await interstitial.show();
+        
+        console.log('✅ ڕیکلام بە سەرکەوتوویی پیشاندرا');
+        markAdAsShown();
+    } catch (error) {
+        console.error('❌ هەڵە لە ڕیکلام:', error);
         markAdAsShown();
     }
 }, false);
-
-// فەنکشنی پیشاندانی ڕیکلام
-function showInterstitialAd() {
-    try {
-        admob.interstitial.load({
-            id: {
-                android: AD_UNIT_ID,
-                ios: AD_UNIT_ID
-            },
-            isTesting: IS_TESTING
-        }).then(() => {
-            return admob.interstitial.show();
-        }).then(() => {
-            console.log('✅ ڕیکلام بە سەرکەوتوویی پیشاندرا');
-        }).catch((err) => {
-            console.error('❌ هەڵە لە ڕیکلام:', err);
-        });
-    } catch (error) {
-        console.error('❌ هەڵەی گشتی:', error);
-    }
-}
 
 // لە حاڵەتی وێبدا (بەبێ Cordova)
 window.addEventListener('load', function() {
