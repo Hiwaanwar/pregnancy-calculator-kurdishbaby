@@ -79,76 +79,173 @@
     padding-right: 4px;
 }
 
-/* ==========================================
-   زر دەستپێکردن - تفاعلي
-   ========================================== */
 .btn-save {
     width: 100%;
-    padding: 18px;
+    padding: 17px;
     background: linear-gradient(135deg, #FFB6C1 0%, #FF8FA3 100%);
     color: white;
-    font-size: 18px;
+    font-size: 17px;
     font-weight: 700;
-    border-radius: 20px;
-    box-shadow: 0 10px 25px rgba(255, 143, 163, 0.4);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    margin-bottom: 15px;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-    border: none;
-    outline: none;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(255, 143, 163, 0.35);
+    transition: all 0.3s;
+    margin-top: 10px;
 }
 
-/* عند الوقوف بالماوس (للكمبيوتر) */
-.btn-save:hover {
-    background: linear-gradient(135deg, #FF9DAE 0%, #FF6B9D 100%);
-    box-shadow: 0 15px 35px rgba(255, 143, 163, 0.5);
-    transform: translateY(-3px);
-}
-
-/* عند الضغط على الزر */
 .btn-save:active {
-    transform: scale(0.95) translateY(0);
-    box-shadow: 0 5px 15px rgba(255, 143, 163, 0.4);
-    background: linear-gradient(135deg, #FF8FA3 0%, #FF6B9D 100%);
+    transform: scale(0.97);
+}
+/* ==========================================
+   تنسيق تقويم flatpickr - وردي كيوت
+   ========================================== */
+
+/* الحقل نفسه */
+.flatpickr-input {
+    cursor: pointer !important;
+    text-align: right !important;
+    padding-right: 45px !important;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 24 24' fill='none' stroke='%23E87A9E' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect x='3' y='4' width='18' height='18' rx='2' ry='2'></rect><line x1='16' y1='2' x2='16' y2='6'></line><line x1='8' y1='2' x2='8' y2='6'></line><line x1='3' y1='10' x2='21' y2='10'></line></svg>") !important;
+    background-repeat: no-repeat !important;
+    background-position: right 15px center !important;
+    background-size: 22px !important;
 }
 
-/* تأثير الموجة (Ripple) عند الضغط */
-.btn-save::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.5);
-    transform: translate(-50%, -50%);
-    transition: width 0.6s, height 0.6s, opacity 0.6s;
-    opacity: 0;
-    pointer-events: none;
+/* نافذة التقويم */
+.flatpickr-calendar {
+    background: #FFFFFF !important;
+    border-radius: 20px !important;
+    box-shadow: 0 15px 40px rgba(232, 122, 158, 0.25) !important;
+    border: 2px solid #FFD1DC !important;
+    padding: 8px !important;
+    font-family: 'Segoe UI', Tahoma, sans-serif !important;
+    direction: rtl !important;
 }
 
-.btn-save:active::after {
-    width: 400px;
-    height: 400px;
-    opacity: 1;
-    transition: 0s;
+/* السهم (المثلث) */
+.flatpickr-calendar.arrowTop::before,
+.flatpickr-calendar.arrowTop::after {
+    border-bottom-color: #FFD1DC !important;
+}
+.flatpickr-calendar.arrowBottom::before,
+.flatpickr-calendar.arrowBottom::after {
+    border-top-color: #FFD1DC !important;
 }
 
-/* تأثير ظهور أولي */
-.btn-save {
-    animation: buttonAppear 0.6s ease-out;
+/* شريط الشهر والسنة */
+.flatpickr-months {
+    background: linear-gradient(135deg, #FFB6C1 0%, #FF8FA3 100%) !important;
+    border-radius: 14px 14px 0 0 !important;
+    padding: 10px !important;
 }
 
-@keyframes buttonAppear {
-    0% {
-        opacity: 0;
-        transform: translateY(20px);
+.flatpickr-month {
+    color: white !important;
+}
+
+.flatpickr-current-month {
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    color: white !important;
+}
+
+.flatpickr-current-month .flatpickr-monthDropdown-months,
+.flatpickr-current-month input.cur-year {
+    color: white !important;
+    font-weight: 700 !important;
+    background: transparent !important;
+    border: none !important;
+}
+
+/* أزرار السابق/التالي */
+.flatpickr-prev-month,
+.flatpickr-next-month {
+    fill: white !important;
+    color: white !important;
+    padding: 8px !important;
+}
+
+.flatpickr-prev-month:hover svg,
+.flatpickr-next-month:hover svg {
+    fill: #FFF0F5 !important;
+}
+
+/* أسماء الأيام */
+.flatpickr-weekdays {
+    background: #FFF0F5 !important;
+}
+
+span.flatpickr-weekday {
+    color: #E87A9E !important;
+    font-weight: 700 !important;
+    font-size: 13px !important;
+}
+
+/* الأيام */
+.flatpickr-day {
+    color: #4A2C3D !important;
+    border-radius: 12px !important;
+    font-weight: 600 !important;
+    transition: all 0.2s !important;
+    max-width: 42px !important;
+    height: 42px !important;
+    line-height: 42px !important;
+    margin: 1px !important;
+}
+
+.flatpickr-day:hover {
+    background: #FFE5EC !important;
+    border-color: #FFB6C1 !important;
+    color: #E87A9E !important;
+}
+
+.flatpickr-day.today {
+    border-color: #FFB6C1 !important;
+    background: #FFF0F5 !important;
+    color: #E87A9E !important;
+    font-weight: 800 !important;
+}
+
+.flatpickr-day.selected,
+.flatpickr-day.selected:hover {
+    background: linear-gradient(135deg, #FFB6C1 0%, #FF8FA3 100%) !important;
+    border-color: #FF8FA3 !important;
+    color: white !important;
+    font-weight: 800 !important;
+    box-shadow: 0 4px 12px rgba(255, 143, 163, 0.4) !important;
+}
+
+.flatpickr-day.flatpickr-disabled,
+.flatpickr-day.flatpickr-disabled:hover {
+    color: #D0C4C9 !important;
+    background: transparent !important;
+    cursor: not-allowed !important;
+}
+
+.flatpickr-day.prevMonthDay,
+.flatpickr-day.nextMonthDay {
+    color: #D0C4C9 !important;
+}
+
+/* قائمة السنوات والشهور */
+.flatpickr-monthDropdown-months {
+    background: white !important;
+    color: #4A2C3D !important;
+}
+
+.flatpickr-monthDropdown-months option {
+    background: white !important;
+    color: #4A2C3D !important;
+}
+
+/* شاشة الموبايل */
+@media (max-width: 500px) {
+    .flatpickr-calendar {
+        width: 320px !important;
+        font-size: 14px !important;
     }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
+    .flatpickr-day {
+        max-width: 38px !important;
+        height: 38px !important;
+        line-height: 38px !important;
     }
 }
