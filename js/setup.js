@@ -27,7 +27,7 @@ document.getElementById('setupForm').addEventListener('submit', function(e) {
     const today = new Date();
     
     if (lastPeriodDate > today) {
-        alert('ڕێکەوتی دوایین خول نابێت دوای ئەمڕۆ بێت');
+        alert('ڕێکەوتی دوایین سوڕی مانگانە نابێت دوای ئەمڕۆ بێت');
         return;
     }
 
